@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 2691552}
   - component: {fileID: 2691551}
   m_Layer: 9
-  m_Name: RoadTest
+  m_Name: RoadThick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -735,6 +735,7 @@ MonoBehaviour:
   wheelBRCollider: {fileID: 0}
   wheelBLCollider: {fileID: 0}
   isBreaking: 0
+  centerOfMass: {fileID: 0}
 --- !u!54 &183233282
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1336,6 +1337,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 417704, guid: 68840c673a0b18e41a044ed077548d55, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1359326735}
+    - targetCorrespondingSourceObject: {fileID: 417704, guid: 68840c673a0b18e41a044ed077548d55, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1243059267}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 118600, guid: 68840c673a0b18e41a044ed077548d55, type: 3}
       insertIndex: -1
@@ -2465,6 +2469,37 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1 &1243059266
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1243059267}
+  m_Layer: 0
+  m_Name: CenterOfMass
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1243059267
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1243059266}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1921773718}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1302299251
 GameObject:
   m_ObjectHideFlags: 0
@@ -4021,7 +4056,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   motorForce: 2000
-  breakForce: 8000
+  breakForce: 20000
   maxSteerAngle: 30
   mainCamera: {fileID: 534669904}
   hoodCamera: {fileID: 1783035238}
@@ -4036,6 +4071,7 @@ MonoBehaviour:
   wheelBRCollider: {fileID: 1608098733}
   wheelBLCollider: {fileID: 1927138159}
   isBreaking: 0
+  centerOfMass: {fileID: 1243059266}
 --- !u!54 &1921773714
 Rigidbody:
   m_ObjectHideFlags: 0

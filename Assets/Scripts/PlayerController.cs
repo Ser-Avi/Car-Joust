@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    //variables
+    //Variables
     [SerializeField] float motorForce;
     [SerializeField] float breakForce;
     float currentBreakForce;
@@ -14,12 +14,14 @@ public class PlayerController : MonoBehaviour
     float forwardInput;
     float steerAngle;
 
+    //Camera
     public Camera mainCamera;
     public Camera hoodCamera;
     public KeyCode cameraKey;
 
     public string inputID;
 
+    //Wheels
     [SerializeField] GameObject wheelFR;
     [SerializeField] GameObject wheelFL;
     [SerializeField] GameObject wheelBR;
@@ -32,40 +34,56 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] bool isBreaking;
 
+    //Origin settings for Respawn
     private Vector3 originPosition;
     private Quaternion originRotation;
+
+    //Center of Mass Management
+    Rigidbody carRb;
+    [SerializeField] GameObject centerOfMass;
 
     // Start is called before the first frame update
     void Start()
     {
         originPosition = transform.position;
         originRotation = transform.rotation;
+        carRb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
+    //Currently gets player input, switches cameras, and initiates respawn when driving offscreen.
     void Update()
     {
-        //camera code
+        GetInput();
+
+        //Camera switching
         if (Input.GetKeyDown(cameraKey))
         {
             mainCamera.enabled = !mainCamera.enabled;
             hoodCamera.enabled = !hoodCamera.enabled;
         }
 
-        //reset vehicle location if it goes off screen
-        if (transform.position.y < -5)
+        //Reset vehicle location if it goes off screen or R gets pressed.
+        //MOVE to game manager and tie this info to score system.
+        if (transform.position.y < -5 || Input.GetKeyDown(KeyCode.R))
         {
             Respawn();
         }
     }
 
-    //Manages physics updates
+    /*
+    Manages physics updates.
+    Currently it calls the MotorManager for driving and the SteeringManager for steering.
+    */
     void LateUpdate()
     {
-        GetInput();
+        carRb.centerOfMass = centerOfMass.transform.localPosition;
         MotorManager();
         SteeringManager();
+    }
 
+    private void OnDrawGizmosSelected(){
+        Gizmos.DrawIcon(carRb.centerOfMass, "P1 CoM");
     }
 
     //Manages Player input information
@@ -105,15 +123,6 @@ public class PlayerController : MonoBehaviour
         wheelFL.transform.rotation = rot;
     }
 
-/*
-Quaternion rot
-;       wheelCollider.GetWorldPose(out pos, out rot);
-        wheelTransform.rotation = rot;
-
-*/
-
-
-
     //Applies breaking force to all wheels.
     private void ApplyBreaking()
     {
@@ -127,6 +136,5 @@ Quaternion rot
     private void Respawn()
     {
         transform.SetPositionAndRotation(originPosition, originRotation);
-
     }
 }
