@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    public GameObject[] vehiclePrefabs;
-    public float spawnRate;
-    
-    public GameObject[] propPrefabs;
+    [SerializeField] GameObject[] vehiclePrefabs;
+    [SerializeField] GameObject[] vehicles;
+    [SerializeField] GameObject[] propPrefabs;
+
+    [SerializeField] float spawnRate;
     private float propZMax = 165;
     private float propZMin = -25;
     private float propXrange = 15;
-    public int propNumber = 8;
+    [SerializeField] int propNumber = 8;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +27,7 @@ public class SpawnManager : MonoBehaviour
         
     }
 
+    //Spawns a propnumber of random props spread evenly on the road
     private void SpawnProps(){
         float propDistanceZ = (propZMax-propZMin)/propNumber;
         for (int i = 0; i<propNumber; i++){
@@ -36,6 +38,7 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
+    //Spawns the traffic. Currently only on one side and uses instantiate, but instead should be activation
     IEnumerator SpawnCars(){
         float laneOneX = 15;
         float laneTwoX = 5;

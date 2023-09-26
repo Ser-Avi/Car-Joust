@@ -23,4 +23,11 @@ public class EnemyVehicleController : MonoBehaviour
         //carRb.AddForce(Vector3.forward * velocityForce);
         transform.Translate(Vector3.forward * Time.deltaTime * speed);
     }
+
+    //The reset function resets the car's movement and places it at input.
+    public void Reset(Vector3 pos, Quaternion rot){
+        transform.SetPositionAndRotation(pos, rot);
+        carRb.velocity = Vector3.zero;
+        carRb.angularVelocity = Vector3.zero;
+    }
 }
