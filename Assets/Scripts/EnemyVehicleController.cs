@@ -5,16 +5,22 @@ using UnityEngine;
 public class EnemyVehicleController : MonoBehaviour
 {
     //Variables
-    public float speed = 15.0f;
+    [SerializeField] float speed = 15.0f;
+    [SerializeField] float velocityForce;
+
+
+    Rigidbody carRb;
 
     // Start is called before the first frame update
     void Start()
     {
+        carRb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
+        //carRb.AddForce(Vector3.forward * velocityForce);
         transform.Translate(Vector3.forward * Time.deltaTime * speed);
     }
 }

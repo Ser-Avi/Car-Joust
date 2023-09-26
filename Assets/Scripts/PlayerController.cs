@@ -19,7 +19,6 @@ public class PlayerController : MonoBehaviour
     public Camera mainCamera;
     public Camera hoodCamera;
     public KeyCode cameraKey;
-
     public string inputID;
 
     //Wheels
