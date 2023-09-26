@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Callbacks;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -82,28 +83,24 @@ public class PlayerController : MonoBehaviour
         SteeringManager();
     }
 
-    private void OnDrawGizmosSelected(){
-        Gizmos.DrawIcon(carRb.centerOfMass, "P1 CoM");
-    }
-
     //Manages Player input information
     private void GetInput()
     {
         //Axis Info
         horizontalInput = Input.GetAxis("Horizontal" + inputID);
         forwardInput = Input.GetAxis("Vertical" + inputID);
-
-        //REPLACE cause 2 player
-        isBreaking = Input.GetKey(KeyCode.Space);
     }
 
     //Drives the wheels based on forward input. Manages breaking as well.
     private void MotorManager()
     {
+
         wheelFRCollider.motorTorque = forwardInput * motorForce;
         wheelFLCollider.motorTorque = forwardInput * motorForce;
         wheelBRCollider.motorTorque = forwardInput * motorForce;
         wheelBLCollider.motorTorque = forwardInput * motorForce;
+
+        isBreaking = wheelFRCollider.rpm * forwardInput < 0;    //breaks if we're trying to go in opposite direction than current
 
         currentBreakForce = isBreaking ? breakForce : 0;   //Breakforce set to 0 if breaking.
         ApplyBreaking();
@@ -136,5 +133,12 @@ public class PlayerController : MonoBehaviour
     private void Respawn()
     {
         transform.SetPositionAndRotation(originPosition, originRotation);
+        carRb.velocity = Vector3.zero;
+        carRb.angularVelocity = Vector3.zero;
+
+        wheelFRCollider.rotationSpeed = 0;
+        wheelFLCollider.rotationSpeed = 0;
+        wheelBRCollider.rotationSpeed = 0;
+        wheelBLCollider.rotationSpeed = 0;
     }
 }
