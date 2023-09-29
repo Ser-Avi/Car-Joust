@@ -20,8 +20,13 @@ public class EnemyVehicleController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        //carRb.AddForce(Vector3.forward * velocityForce);
-        transform.Translate(Vector3.forward * Time.deltaTime * speed);
+        carRb.AddForce(Vector3.forward * velocityForce);
+        //transform.Translate(Vector3.forward * Time.deltaTime * speed);
+
+        if (transform.position.y < -10)
+        {
+            Destroy(gameObject);
+        }
     }
 
     //The reset function resets the car's movement and places it at input.
@@ -30,4 +35,6 @@ public class EnemyVehicleController : MonoBehaviour
         carRb.velocity = Vector3.zero;
         carRb.angularVelocity = Vector3.zero;
     }
+
+
 }
