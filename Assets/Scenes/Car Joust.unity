@@ -2975,8 +2975,8 @@ MonoBehaviour:
   - {fileID: 1279646032593002410, guid: 4b8da5edaaabb4d0ab7c9c84c2077f34, type: 3}
   - {fileID: 9142556093782616542, guid: 124fac5693852414ab4b59dd1975a28f, type: 3}
   - {fileID: 4059262016817362571, guid: eb56d41b67f8341fa9b164f9cba3122e, type: 3}
-  spawnRate: 1
-  propNumber: 5
+  spawnRate: 4
+  propNumber: 4
 --- !u!4 &1358600124
 Transform:
   m_ObjectHideFlags: 0

@@ -20,7 +20,7 @@ public class EnemyVehicleController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        carRb.AddForce(Vector3.forward * velocityForce);
+        carRb.AddForce(transform.forward * velocityForce);
         //transform.Translate(Vector3.forward * Time.deltaTime * speed);
 
         if (transform.position.y < -10)

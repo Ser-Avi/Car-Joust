@@ -29,8 +29,8 @@ public class SpawnManager : MonoBehaviour
 
     //Spawns a propnumber of random props spread evenly on the road
     private void SpawnProps(){
-        float propDistanceZ = (propZMax-propZMin)/propNumber;
-        for (int i = 0; i<propNumber; i++){
+        float propDistanceZ = (propZMax-propZMin)/(propNumber+1);
+        for (int i = 1; i<=propNumber; i++){
             float spawnZ = propZMin+(i*propDistanceZ);
             float spawnX = Random.Range(-propXrange, propXrange);
             GameObject prop = propPrefabs[Random.Range(0, propPrefabs.Length)];
@@ -40,14 +40,14 @@ public class SpawnManager : MonoBehaviour
 
     //Spawns the traffic. Currently only on one side
     IEnumerator SpawnCars(){
-        float laneOneX = 15;
-        float laneTwoX = 5;
+        float[] laneXs = {15, 5, -5, -15};
+
         while (true){
             yield return new WaitForSeconds(10/spawnRate);
             GameObject vehicle = vehiclePrefabs[Random.Range(0, vehiclePrefabs.Length)];
-            Instantiate(vehicle, new Vector3(laneTwoX, 0.2f, -25), vehicle.transform.rotation);
+            Instantiate(vehicle, new Vector3(laneXs[Random.Range(0,2)], 0.2f, -20), vehicle.transform.rotation);
             vehicle = vehiclePrefabs[Random.Range(0, vehiclePrefabs.Length)];
-            Instantiate(vehicle, new Vector3(laneOneX, 0.2f, -25), vehicle.transform.rotation);
+            Instantiate(vehicle, new Vector3(laneXs[Random.Range(2,4)], 0.2f, 160), new Quaternion(0,180,0,0));
         }
         
 
