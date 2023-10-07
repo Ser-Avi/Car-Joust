@@ -122,6 +122,11 @@ public class PlayerController : MonoBehaviour
     //Applies breaking force to all wheels.
     private void ApplyBreaking()
     {
+        if (currentBreakForce!=0)
+        {
+            carRb.velocity *= 0.99f;
+        }
+        
         wheelFRCollider.brakeTorque = currentBreakForce;
         wheelFLCollider.brakeTorque = currentBreakForce;
         wheelBRCollider.brakeTorque = currentBreakForce;

@@ -5,6 +5,8 @@ using UnityEngine;
 public class LanceTip : MonoBehaviour
 {
     [SerializeField] float forceAmount;
+    
+    [SerializeField] GameObject player;
     Vector3 pos;
     Quaternion rot;
 
@@ -18,7 +20,6 @@ public class LanceTip : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        Debug.Log($"{pos} and {rot}");
         transform.SetLocalPositionAndRotation(pos, rot);
     }
 
@@ -28,7 +29,10 @@ public class LanceTip : MonoBehaviour
         if (other.GetComponent<Rigidbody>())
         {
             Debug.Log("Boink2");
-            other.GetComponent<Rigidbody>().AddForce(transform.position.normalized * forceAmount, ForceMode.Impulse);
+            Debug.Log(other.GetComponent<Rigidbody>().velocity.magnitude);
+            Vector3 forceDirection = (transform.position-player.transform.position).normalized;
+            other.GetComponent<Rigidbody>().AddForce(forceDirection * forceAmount * other.GetComponent<Rigidbody>().mass,
+                                     ForceMode.Impulse);
         }
     }
 }

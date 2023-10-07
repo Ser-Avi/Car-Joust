@@ -38,12 +38,12 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
-    //Spawns the traffic. Currently only on one side and uses instantiate, but instead should be activation
+    //Spawns the traffic. Currently only on one side
     IEnumerator SpawnCars(){
         float laneOneX = 15;
         float laneTwoX = 5;
         while (true){
-            yield return new WaitForSeconds(spawnRate);
+            yield return new WaitForSeconds(10/spawnRate);
             GameObject vehicle = vehiclePrefabs[Random.Range(0, vehiclePrefabs.Length)];
             Instantiate(vehicle, new Vector3(laneTwoX, 0.2f, -25), vehicle.transform.rotation);
             vehicle = vehiclePrefabs[Random.Range(0, vehiclePrefabs.Length)];
