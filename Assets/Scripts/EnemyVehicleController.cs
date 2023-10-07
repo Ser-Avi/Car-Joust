@@ -8,6 +8,7 @@ public class EnemyVehicleController : MonoBehaviour
     [SerializeField] float speed = 15.0f;
     [SerializeField] float velocityForce;
 
+    MainManager mainManager;
 
     Rigidbody carRb;
 
@@ -15,13 +16,17 @@ public class EnemyVehicleController : MonoBehaviour
     void Start()
     {
         carRb = GetComponent<Rigidbody>();
+        mainManager = MainManager.Instance;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        carRb.AddForce(transform.forward * velocityForce);
-        //transform.Translate(Vector3.forward * Time.deltaTime * speed);
+        if (!mainManager.isGamePaused)
+        {
+            carRb.AddForce(transform.forward * velocityForce);
+            //transform.Translate(Vector3.forward * Time.deltaTime * speed);
+        }
 
         if (transform.position.y < -10)
         {
@@ -30,7 +35,8 @@ public class EnemyVehicleController : MonoBehaviour
     }
 
     //The reset function resets the car's movement and places it at input.
-    public void Reset(Vector3 pos, Quaternion rot){
+    public void Reset(Vector3 pos, Quaternion rot)
+    {
         transform.SetPositionAndRotation(pos, rot);
         carRb.velocity = Vector3.zero;
         carRb.angularVelocity = Vector3.zero;

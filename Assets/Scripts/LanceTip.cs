@@ -25,11 +25,8 @@ public class LanceTip : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Boink");
         if (other.GetComponent<Rigidbody>())
         {
-            Debug.Log("Boink2");
-            Debug.Log(other.GetComponent<Rigidbody>().velocity.magnitude);
             Vector3 forceDirection = (transform.position-player.transform.position).normalized;
             other.GetComponent<Rigidbody>().AddForce(forceDirection * forceAmount * other.GetComponent<Rigidbody>().mass,
                                      ForceMode.Impulse);

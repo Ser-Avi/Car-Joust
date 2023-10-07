@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
+    MainManager mainManager;
+
     [SerializeField] GameObject[] vehiclePrefabs;
     [SerializeField] GameObject[] vehicles;
     [SerializeField] GameObject[] propPrefabs;
@@ -17,6 +19,7 @@ public class SpawnManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        mainManager =  MainManager.Instance;
         SpawnProps();
         StartCoroutine(SpawnCars());
     }
@@ -42,10 +45,10 @@ public class SpawnManager : MonoBehaviour
     IEnumerator SpawnCars(){
         float[] laneXs = {15, 5, -5, -15};
 
-        while (true){
+        while (!mainManager.isGamePaused){
             yield return new WaitForSeconds(10/spawnRate);
             GameObject vehicle = vehiclePrefabs[Random.Range(0, vehiclePrefabs.Length)];
-            Instantiate(vehicle, new Vector3(laneXs[Random.Range(0,2)], 0.2f, -20), vehicle.transform.rotation);
+            Instantiate(vehicle, new Vector3(laneXs[Random.Range(0,2)], 0.2f, -20), Quaternion.identity);
             vehicle = vehiclePrefabs[Random.Range(0, vehiclePrefabs.Length)];
             Instantiate(vehicle, new Vector3(laneXs[Random.Range(2,4)], 0.2f, 160), new Quaternion(0,180,0,0));
         }

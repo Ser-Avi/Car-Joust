@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    MainManager mainManager;
+
     //Variables
     [SerializeField] float motorForce;
     [SerializeField] float breakForce;
@@ -45,6 +47,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        mainManager = MainManager.Instance;
         originPosition = transform.position;
         originRotation = transform.rotation;
         carRb = GetComponent<Rigidbody>();
@@ -57,7 +60,7 @@ public class PlayerController : MonoBehaviour
         GetInput();
 
         //Camera switching
-        if (Input.GetKeyDown(cameraKey))
+        if (Input.GetKeyDown(cameraKey) && !mainManager.isGamePaused)
         {
             mainCamera.enabled = !mainCamera.enabled;
             hoodCamera.enabled = !hoodCamera.enabled;
@@ -75,11 +78,15 @@ public class PlayerController : MonoBehaviour
     Manages physics updates.
     Currently it calls the MotorManager for driving and the SteeringManager for steering.
     */
-    void LateUpdate()
+    void FixedUpdate()
     {
         carRb.centerOfMass = centerOfMass.transform.localPosition;
-        MotorManager();
-        SteeringManager();
+
+        if (!mainManager.isGamePaused)
+        {
+            MotorManager();
+            SteeringManager();
+        }
     }
 
     //Manages Player input information
@@ -122,11 +129,11 @@ public class PlayerController : MonoBehaviour
     //Applies breaking force to all wheels.
     private void ApplyBreaking()
     {
-        if (currentBreakForce!=0)
+        if (currentBreakForce != 0)
         {
             carRb.velocity *= 0.99f;
         }
-        
+
         wheelFRCollider.brakeTorque = currentBreakForce;
         wheelFLCollider.brakeTorque = currentBreakForce;
         wheelBRCollider.brakeTorque = currentBreakForce;
