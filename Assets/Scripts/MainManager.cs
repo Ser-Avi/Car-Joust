@@ -1,6 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 public class MainManager : MonoBehaviour
 {
@@ -24,7 +28,7 @@ public class MainManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.P) && SceneManager.GetActiveScene().buildIndex != 0)
         {
             if (!isGamePaused){
                 Pause();
@@ -48,5 +52,15 @@ public class MainManager : MonoBehaviour
     public void UnPause()
     {
         Time.timeScale = 1;
+    }
+
+    //Exit quits the game. If statement is for quitting editor vs game.
+    public void Exit()
+    {
+#if UNITY_EDITOR
+        EditorApplication.ExitPlaymode();
+#else
+        Application.Quit();
+#endif
     }
 }
