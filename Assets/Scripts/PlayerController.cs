@@ -3,10 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Callbacks;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
     MainManager mainManager;
+    [SerializeField] GameObject gameManager;
 
     //Variables
     [SerializeField] float motorForce;
@@ -48,8 +50,10 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         mainManager = MainManager.Instance;
+
         originPosition = transform.position;
         originRotation = transform.rotation;
+
         carRb = GetComponent<Rigidbody>();
     }
 
@@ -70,6 +74,8 @@ public class PlayerController : MonoBehaviour
         //MOVE to game manager and tie this info to score system.
         if (transform.position.y < -5 || Input.GetKeyDown(KeyCode.R))
         {
+            gameManager.GetComponent<GameManager>().UpdateScore(1, int.Parse(inputID));
+
             Respawn();
         }
     }
