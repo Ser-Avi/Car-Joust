@@ -435,6 +435,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfce81e82c1c54aaa907d2372d17cb57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
   motorForce: 2000
   breakForce: 50000
   maxSteerAngle: 30
@@ -2033,7 +2034,7 @@ GameObject:
   - component: {fileID: 1387792028}
   - component: {fileID: 1387792027}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Title Placeholder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3564,6 +3565,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfce81e82c1c54aaa907d2372d17cb57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
   motorForce: 2000
   breakForce: 50000
   maxSteerAngle: 30

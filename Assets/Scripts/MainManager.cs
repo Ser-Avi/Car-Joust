@@ -6,6 +6,12 @@ using UnityEngine;
 using UnityEditor;
 #endif
 
+/*
+Main manager persists between scenes and has one Instance.
+It holds a single bool, isGamePaused.
+On Awake it initiates the instance as this and destroys duplicates.
+
+*/
 public class MainManager : MonoBehaviour
 {
     public static MainManager Instance { get; private set; } //Can be accessed, but not changed.
@@ -26,32 +32,29 @@ public class MainManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    //Update calls the pause manager if P is pressed and the game is active.
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.P) && SceneManager.GetActiveScene().buildIndex != 0)
         {
-            if (!isGamePaused){
-                Pause();
-            } else{
-                UnPause();
-            }
-            isGamePaused = !isGamePaused;
+            PauseManager();
         }
     }
 
-
-    //Pause stops the time
-    //CREATE pause screen
-    public void Pause()
+    //Pause Manager pauses and unpauses the game.
+    public void PauseManager()
     {
-        Time.timeScale = 0;
-    }
 
-    //Unpause sets timescale back to one.
-    //CREATE removing pause screen
-    public void UnPause()
-    {
-        Time.timeScale = 1;
+        if (!isGamePaused)
+        {
+            Time.timeScale = 0;
+        }
+        else
+        {
+            //Perhaps add a 3 second countdown timer here. -> Adjustable game resume delay time in Options?
+            Time.timeScale = 1;
+        }
+        isGamePaused = !isGamePaused;
     }
 
     //Exit quits the game. If statement is for quitting editor vs game.
