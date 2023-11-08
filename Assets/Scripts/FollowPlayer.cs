@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+/*
+This allows an object to follow another one (generally the player).
+Currently unused as camera gameObject is a child of the player.
+Has vars for the player gameobject and a vector3 offset -- the vector of follower from the player.
+*/
 public class FollowPlayer : MonoBehaviour
 {
     //vars

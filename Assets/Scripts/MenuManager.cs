@@ -6,6 +6,12 @@ using UnityEngine.SceneManagement;
 using UnityEditor;
 #endif
 
+/*
+MenuManager should be attached to the Canvas.
+Used for managing the menu button functions.
+Has variables for the main manager and the pause screen.
+Has methods for setting pause screen, starting game scene, returning to menu scene, and exiting.
+*/
 public class MenuManager : MonoBehaviour
 {
     MainManager mainManager;

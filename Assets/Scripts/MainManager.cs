@@ -10,7 +10,7 @@ using UnityEditor;
 Main manager persists between scenes and has one Instance.
 It holds a single bool, isGamePaused.
 On Awake it initiates the instance as this and destroys duplicates.
-
+Other methods are to pause and to exit.
 */
 public class MainManager : MonoBehaviour
 {
