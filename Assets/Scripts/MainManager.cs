@@ -32,10 +32,11 @@ public class MainManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    //Update calls the pause manager if P is pressed and the game is active.
+    //Update calls the pause manager if P or Esc are pressed and the game is active.
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P) && SceneManager.GetActiveScene().buildIndex != 0)
+        if ((Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape)) 
+                && SceneManager.GetActiveScene().buildIndex != 0)
         {
             PauseManager();
         }
