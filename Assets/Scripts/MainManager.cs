@@ -36,7 +36,7 @@ public class MainManager : MonoBehaviour
     private void Update()
     {
         if ((Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape)) 
-                && SceneManager.GetActiveScene().buildIndex != 0)
+                && SceneManager.GetActiveScene().buildIndex != 0 && !isGamePaused)
         {
             PauseManager();
         }

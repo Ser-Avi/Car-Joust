@@ -9,14 +9,16 @@ using UnityEditor;
 /*
 MenuManager should be attached to the Canvas.
 Used for managing the menu button functions.
-Has variables for the main manager and the pause screen.
-Has methods for setting pause screen, resuming, starting game scene, returning to menu scene, and exiting.
+Main screen is set either to the menu buttons or the pause screen.
+Has variables for the main manager and the main screen.
+Has methods for setting main screen, resuming, starting game scene, returning to menu scene, and exiting.
 */
 public class MenuManager : MonoBehaviour
 {
     MainManager mainManager;
 
-    [SerializeField] GameObject pauseScreen;
+    [SerializeField] GameObject mainScreen;
+    [SerializeField] GameObject controlsScreen;
 
     // Start is called before the first frame update
     void Start()
@@ -27,13 +29,21 @@ public class MenuManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (mainManager.isGamePaused)
+        MainScreenManager();
+    }
+
+    //MainScreenManager manages when the main screen should be active.
+    //In the first scene this is when the controls aren't active.
+    //In the rest it is when the game is paused and the controls aren't active.
+    private void MainScreenManager()
+    {
+        if (!controlsScreen.activeInHierarchy && (SceneManager.GetActiveScene().buildIndex == 0 || mainManager.isGamePaused))
         {
-            pauseScreen.SetActive(true);
+            mainScreen.SetActive(true);
         }
         else
         {
-            pauseScreen.SetActive(false);
+            mainScreen.SetActive(false);
         }
     }
 
@@ -64,5 +74,11 @@ public class MenuManager : MonoBehaviour
     {
         mainManager.PauseManager();
         SceneManager.LoadScene(0);
+    }
+
+    //Toggles controls screen
+    public void ControlsToggler()
+    {
+        controlsScreen.SetActive(!controlsScreen.activeInHierarchy);
     }
 }
