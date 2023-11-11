@@ -88,7 +88,7 @@ public class PlayerController : MonoBehaviour
     {
         carRb.centerOfMass = centerOfMass.transform.localPosition;
 
-        if (!mainManager.isGamePaused)
+        if (!mainManager.isGamePaused && Time.timeScale == 1)
         {
             MotorManager();
             SteeringManager();

@@ -2,6 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
+using System;
+using UnityEngine.UI;
+using TMPro;
+using UnityEngine.UIElements;
+
+
+
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -17,6 +24,7 @@ public class MainManager : MonoBehaviour
     public static MainManager Instance { get; private set; } //Can be accessed, but not changed.
 
     public bool isGamePaused;
+    public int countdownTime;
 
     //On awake create instance that persists between scenes
     private void Awake()
@@ -33,9 +41,10 @@ public class MainManager : MonoBehaviour
     }
 
     //Update calls the pause manager if P or Esc are pressed and the game is active.
+    //This should all be MOVED to GameManager and the relevant files need to be updated.
     private void Update()
     {
-        if ((Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape)) 
+        if ((Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape))
                 && SceneManager.GetActiveScene().buildIndex != 0 && !isGamePaused)
         {
             PauseManager();
@@ -48,14 +57,43 @@ public class MainManager : MonoBehaviour
 
         if (!isGamePaused)
         {
+            isGamePaused = !isGamePaused;
             Time.timeScale = 0;
         }
         else
         {
-            //Perhaps add a 3 second countdown timer here. -> Adjustable game resume delay time in Options?
-            Time.timeScale = 1;
+            //ADD a 3 second countdown timer here
+            IEnumerator coroutine = ResumeCountdown(countdownTime);
+            StartCoroutine(coroutine);
         }
-        isGamePaused = !isGamePaused;
+    }
+
+    //This coroutine creates a short countdown timer when resuming the game.
+    IEnumerator ResumeCountdown(int time)
+    {
+        //finding gameobjects for countdown screen
+        GameObject countdownScreen = GameObject.Find("Countdown Screen");
+        GameObject countdownText = countdownScreen.transform.GetChild(0).gameObject;
+        GameObject panel = countdownScreen.transform.GetChild(1).gameObject;
+
+        panel.SetActive(true);
+        countdownText.GetComponent<TextMeshProUGUI>().text = countdownTime.ToString();
+        countdownText.SetActive(true);
+
+        isGamePaused = !isGamePaused; // this removes the pause screen
+
+        //countdown by one each second and update timer
+        while (time > 0)
+        {
+            yield return new WaitForSecondsRealtime(1);
+            time -= 1;
+            countdownText.GetComponent<TextMeshProUGUI>().text = time.ToString();
+        }
+
+        //turn screen off and resume game
+        panel.SetActive(false);
+        countdownText.SetActive(false);
+        Time.timeScale = 1;
     }
 
     //Exit quits the game. If statement is for quitting editor vs game.
