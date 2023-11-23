@@ -1,11 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
-using System;
-using UnityEngine.UI;
 using TMPro;
-using UnityEngine.UIElements;
 
 
 
