@@ -553,16 +553,16 @@ MonoBehaviour:
   m_Navigation:
     m_Mode: 3
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 563972975}
+    m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 1, g: 0.94400096, b: 0.4292453, a: 1}
-    m_PressedColor: {r: 0.8113208, g: 0.7666154, b: 0.31763974, a: 1}
-    m_SelectedColor: {r: 0.9716981, g: 0.22097434, b: 0.1787558, a: 1}
+    m_NormalColor: {r: 0.6331997, g: 0.8962264, b: 0.612985, a: 1}
+    m_HighlightedColor: {r: 0.36560076, g: 0.5754717, b: 0.3501691, a: 1}
+    m_PressedColor: {r: 0.23221391, g: 0.38679248, b: 0.22076362, a: 1}
+    m_SelectedColor: {r: 0.3647059, g: 0.5764706, b: 0.34901962, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -582,7 +582,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1608820621}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
         m_MethodName: Exit
         m_Mode: 1
@@ -1520,10 +1520,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_NormalColor: {r: 0.6313726, g: 0.8980392, b: 0.6117647, a: 1}
+    m_HighlightedColor: {r: 0.3647059, g: 0.5764706, b: 0.34901962, a: 1}
+    m_PressedColor: {r: 0.23137255, g: 0.3882353, b: 0.21960784, a: 1}
+    m_SelectedColor: {r: 0.3647059, g: 0.5764706, b: 0.34901962, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -2182,7 +2182,7 @@ GameObject:
   - component: {fileID: 543288220}
   - component: {fileID: 543288224}
   m_Layer: 0
-  m_Name: Capsule (1)
+  m_Name: Tip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2215,7 +2215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6cf3736b4a804c0ba097760bd8cbd2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forceAmount: 100
+  forceAmount: 50
   player: {fileID: 1921773708}
 --- !u!136 &543288221
 CapsuleCollider:
@@ -2458,10 +2458,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 1, g: 0.94400096, b: 0.4292453, a: 1}
-    m_PressedColor: {r: 0.8113208, g: 0.7666154, b: 0.31763974, a: 1}
-    m_SelectedColor: {r: 0.9716981, g: 0.22097434, b: 0.1787558, a: 1}
+    m_NormalColor: {r: 0.6313726, g: 0.8980392, b: 0.6117647, a: 1}
+    m_HighlightedColor: {r: 0.3647059, g: 0.5764706, b: 0.34901962, a: 1}
+    m_PressedColor: {r: 0.23137255, g: 0.3882353, b: 0.21960784, a: 1}
+    m_SelectedColor: {r: 0.3647059, g: 0.5764706, b: 0.34901962, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -2943,10 +2943,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 1, g: 0.94400096, b: 0.4292453, a: 1}
-    m_PressedColor: {r: 0.8113208, g: 0.7666154, b: 0.31763974, a: 1}
-    m_SelectedColor: {r: 0.9716981, g: 0.22097434, b: 0.1787558, a: 1}
+    m_NormalColor: {r: 0.6313726, g: 0.8980392, b: 0.6117647, a: 1}
+    m_HighlightedColor: {r: 0.3647059, g: 0.5764706, b: 0.34901962, a: 1}
+    m_PressedColor: {r: 0.23137255, g: 0.3882353, b: 0.21960784, a: 1}
+    m_SelectedColor: {r: 0.3647059, g: 0.5764706, b: 0.34901962, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -3948,10 +3948,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 1, g: 0.94400096, b: 0.4292453, a: 1}
-    m_PressedColor: {r: 0.8113208, g: 0.7666154, b: 0.31763974, a: 1}
-    m_SelectedColor: {r: 0.9716981, g: 0.22097434, b: 0.1787558, a: 1}
+    m_NormalColor: {r: 0.6313726, g: 0.8980392, b: 0.6117647, a: 1}
+    m_HighlightedColor: {r: 0.3647059, g: 0.5764706, b: 0.34901962, a: 1}
+    m_PressedColor: {r: 0.23137255, g: 0.3882353, b: 0.21960784, a: 1}
+    m_SelectedColor: {r: 0.3647059, g: 0.5764706, b: 0.34901962, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -5205,10 +5205,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 1, g: 0.94400096, b: 0.4292453, a: 1}
-    m_PressedColor: {r: 0.8113208, g: 0.7666154, b: 0.31763974, a: 1}
-    m_SelectedColor: {r: 0.9716981, g: 0.22097434, b: 0.1787558, a: 1}
+    m_NormalColor: {r: 0.6313726, g: 0.8980392, b: 0.6117647, a: 1}
+    m_HighlightedColor: {r: 0.3647059, g: 0.5764706, b: 0.34901962, a: 1}
+    m_PressedColor: {r: 0.23137255, g: 0.3882353, b: 0.21960784, a: 1}
+    m_SelectedColor: {r: 0.3647059, g: 0.5764706, b: 0.34901962, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -5522,7 +5522,7 @@ GameObject:
   - component: {fileID: 1466928509}
   - component: {fileID: 1466928508}
   m_Layer: 0
-  m_Name: Capsule (1)
+  m_Name: Tip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5582,7 +5582,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6cf3736b4a804c0ba097760bd8cbd2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forceAmount: 100
+  forceAmount: 50
   player: {fileID: 183233280}
 --- !u!136 &1466928510
 CapsuleCollider:
@@ -6176,7 +6176,7 @@ GameObject:
   - component: {fileID: 1635678036}
   - component: {fileID: 1635678035}
   m_Layer: 0
-  m_Name: Capsule
+  m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8371,7 +8371,7 @@ GameObject:
   - component: {fileID: 2121984397}
   - component: {fileID: 2121984396}
   m_Layer: 0
-  m_Name: Capsule
+  m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
