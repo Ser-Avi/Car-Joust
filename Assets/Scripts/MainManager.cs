@@ -21,6 +21,13 @@ public class MainManager : MonoBehaviour
 
     public bool isGamePaused;
     public int countdownTime;
+    
+    //Variables that can be changed in settings
+    public int forceSetting = 5;    //TODO: have options setting to change this
+    public float motorForceSetting;
+    public float breakForceSetting;
+    public float spawnRateSetting;
+    public int propNumberSetting = 8;
 
     //On awake create instance that persists between scenes
     private void Awake()

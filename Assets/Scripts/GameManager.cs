@@ -3,7 +3,7 @@ using TMPro;
 
 /*
 This script manages all "game" elements. Currently this is only keeping track of the score.
-ADD countdown timer for timed option.
+TODO: countdown timer for timed option.
 Has vars for score display text, and scores for each player.
 Has a method to update score.
 */

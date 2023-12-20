@@ -9,16 +9,19 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] GameObject[] vehicles;
     [SerializeField] GameObject[] propPrefabs;
 
-    [SerializeField] float spawnRate;
+    float spawnRate;
     private float propZMax = 165;
     private float propZMin = -25;
     private float propXrange = 15;
-    [SerializeField] int propNumber = 8;
+    int propNumber;
 
     // Start is called before the first frame update
     void Start()
     {
         mainManager = MainManager.Instance;
+        spawnRate = mainManager.spawnRateSetting;
+        propNumber = mainManager.propNumberSetting;
+
         SpawnProps();
         StartCoroutine(SpawnCars());
     }

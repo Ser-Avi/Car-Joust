@@ -79,4 +79,6 @@ public class MenuManager : MonoBehaviour
     {
         controlsScreen.SetActive(!controlsScreen.activeInHierarchy);
     }
+
+    //TODO: Reset function
 }

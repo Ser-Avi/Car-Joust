@@ -9,6 +9,7 @@ Has methods for initializing vars,
 public class LanceTip : MonoBehaviour
 {
     [SerializeField] float forceAmount;
+    int forceSetting;
     
     [SerializeField] GameObject player;
 
@@ -18,6 +19,7 @@ public class LanceTip : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        forceAmount = (MainManager.Instance.forceSetting/5)*forceAmount;
         pos = transform.localPosition;
         rot = transform.localRotation;
     }

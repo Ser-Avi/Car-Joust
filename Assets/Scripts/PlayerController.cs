@@ -6,8 +6,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject gameManager;
 
     //Variables
-    [SerializeField] float motorForce;
-    [SerializeField] float breakForce;
+    float motorForce;// = MainManager.Instance.motorForceSetting;
+    float breakForce;// = MainManager.Instance.breakForceSetting;
     float currentBreakForce;
     [SerializeField] float maxSteerAngle = 30;
     float horizontalInput;
@@ -45,6 +45,9 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         mainManager = MainManager.Instance;
+
+        motorForce = mainManager.motorForceSetting;
+        breakForce = mainManager.breakForceSetting;
 
         originPosition = transform.position;
         originRotation = transform.rotation;
