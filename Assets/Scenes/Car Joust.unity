@@ -4703,7 +4703,7 @@ MonoBehaviour:
   isGamePaused: 0
   countdownTime: 3
   forceSetting: 5
-  motorForceSetting: 8000
+  motorForceSetting: 2000
   breakForceSetting: 50000
   spawnRateSetting: 4
   propNumberSetting: 8
