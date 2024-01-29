@@ -4705,7 +4705,7 @@ MonoBehaviour:
   forceSetting: 5
   motorForceSetting: 2000
   breakForceSetting: 50000
-  spawnRateSetting: 4
+  spawnRateSetting: 2
   propNumberSetting: 8
 --- !u!1 &1196337453
 GameObject:

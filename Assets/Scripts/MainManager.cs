@@ -23,10 +23,12 @@ public class MainManager : MonoBehaviour
     public int countdownTime;
     
     //Variables that can be changed in settings
-    public int forceSetting = 5;    //TODO: have options setting to change this
+   [Range(0, 10)] public float forceSetting = 5;
+   public void SetLanceForce(float force){forceSetting = force;}
     public float motorForceSetting;
     public float breakForceSetting;
-    public float spawnRateSetting;
+    [Range(0, 10)] public float spawnRateSetting;
+    public void SetSpawnRate(float rate){spawnRateSetting = rate;}
     public int propNumberSetting = 8;
 
     //On awake create instance that persists between scenes

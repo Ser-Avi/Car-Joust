@@ -9,8 +9,6 @@ Has methods for initializing vars,
 public class LanceTip : MonoBehaviour
 {
     [SerializeField] float forceAmount;
-    int forceSetting;
-    
     [SerializeField] GameObject player;
 
     Vector3 pos;
