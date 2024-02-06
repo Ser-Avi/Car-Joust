@@ -17,6 +17,8 @@ public class MenuManager : MonoBehaviour
 
     [SerializeField] GameObject mainScreen;
     [SerializeField] GameObject controlsScreen;
+    [SerializeField] GameObject optionsScreen;
+    [SerializeField] GameObject pauseScreen;
 
     // Start is called before the first frame update
     void Start()
@@ -27,22 +29,7 @@ public class MenuManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MainScreenManager();
-    }
 
-    //MainScreenManager manages when the main screen should be active.
-    //In the first scene this is when the controls aren't active.
-    //In the rest it is when the game is paused and the controls aren't active.
-    private void MainScreenManager()
-    {
-        if (!controlsScreen.activeInHierarchy && (SceneManager.GetActiveScene().buildIndex == 0 || mainManager.isGamePaused))
-        {
-            mainScreen.SetActive(true);
-        }
-        else
-        {
-            mainScreen.SetActive(false);
-        }
     }
 
     //StartNew starts the first scene of the game.
@@ -61,24 +48,48 @@ public class MenuManager : MonoBehaviour
 #endif
     }
 
-    //Resumes game
+    //Resumes game with countdown
     public void Resume()
     {
+        PauseScreenToggler();
         mainManager.PauseManager();
     }
 
     //Returns game to the main menu scene (0 in the index).
     public void MainMenu()
     {
-        mainManager.PauseManager();
+        Time.timeScale = 1;
         SceneManager.LoadScene(0);
     }
 
     //Toggles controls screen
     public void ControlsToggler()
-    {
+    {  
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            mainScreen.SetActive(!mainScreen.activeInHierarchy);
+        }
+        else
+        {
+            pauseScreen.SetActive(!pauseScreen.activeInHierarchy);
+        }
+        
         controlsScreen.SetActive(!controlsScreen.activeInHierarchy);
     }
 
-    //TODO: Reset function
+    public void OptionsToggler()
+    {
+        mainScreen.SetActive(!mainScreen.activeInHierarchy);
+        optionsScreen.SetActive(!optionsScreen.activeInHierarchy);
+    }
+
+    public void PauseScreenToggler()
+    {
+        pauseScreen.SetActive(!pauseScreen.activeInHierarchy);
+    }
+
+    public void ResetGameScene()
+    {
+        SceneManager.LoadScene(1);
+    }
 }

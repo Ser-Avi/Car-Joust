@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Pause
   - Countdown
+  - Canvas
   layers:
   - Default
   - TransparentFX

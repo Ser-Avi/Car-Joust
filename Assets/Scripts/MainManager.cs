@@ -3,8 +3,6 @@ using UnityEngine.SceneManagement;
 using UnityEngine;
 using TMPro;
 
-
-
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -45,29 +43,19 @@ public class MainManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    //Update calls the pause manager if P or Esc are pressed and the game is active.
-    //This should all be MOVED to GameManager and the relevant files need to be updated.
-    private void Update()
-    {
-        if ((Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape))
-                && SceneManager.GetActiveScene().buildIndex != 0 && !isGamePaused)
-        {
-            PauseManager();
-        }
-    }
-
     //Pause Manager pauses and unpauses the game.
     public void PauseManager()
     {
 
         if (!isGamePaused)
         {
-            isGamePaused = !isGamePaused;
+            GameObject.FindGameObjectWithTag("Canvas").GetComponent<MenuManager>().PauseScreenToggler();
+            isGamePaused = true;
             Time.timeScale = 0;
         }
         else
         {
-            //ADD a 3 second countdown timer here
+            //3 second countdown timer before resuming
             IEnumerator coroutine = ResumeCountdown(countdownTime);
             StartCoroutine(coroutine);
         }
@@ -85,7 +73,7 @@ public class MainManager : MonoBehaviour
         countdownText.GetComponent<TextMeshProUGUI>().text = countdownTime.ToString();
         countdownText.SetActive(true);
 
-        isGamePaused = !isGamePaused; // this removes the pause screen
+        GameObject.FindGameObjectWithTag("Canvas").GetComponent<MenuManager>().PauseScreenToggler();
 
         //countdown by one each second and update timer
         while (time > 0)
