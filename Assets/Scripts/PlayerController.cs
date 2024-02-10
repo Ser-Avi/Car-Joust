@@ -62,7 +62,7 @@ public class PlayerController : MonoBehaviour
         GetInput();
 
         //Camera switching
-        if (Input.GetKeyDown(cameraKey) && !mainManager.isGamePaused)
+        if (Input.GetKeyDown(cameraKey) && !mainManager.isGamePaused && !mainManager.isGameOver)
         {
             mainCamera.enabled = !mainCamera.enabled;
             hoodCamera.enabled = !hoodCamera.enabled;
@@ -86,7 +86,7 @@ public class PlayerController : MonoBehaviour
     {
         carRb.centerOfMass = centerOfMass.transform.localPosition;
 
-        if (!mainManager.isGamePaused && Time.timeScale == 1)
+        if (!mainManager.isGamePaused && Time.timeScale == 1 && !mainManager.isGameOver)
         {
             MotorManager();
             SteeringManager();

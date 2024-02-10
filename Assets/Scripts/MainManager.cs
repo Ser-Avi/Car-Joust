@@ -18,16 +18,22 @@ public class MainManager : MonoBehaviour
     public static MainManager Instance { get; private set; } //Can be accessed, but not changed.
 
     public bool isGamePaused;
+    public bool isGameOver = false;
     public int countdownTime;
-    
-    //Variables that can be changed in settings
-   [Range(0, 10)] public float forceSetting = 5;
-   public void SetLanceForce(float force){forceSetting = force;}
+
     public float motorForceSetting;
     public float breakForceSetting;
+
+    //Variables that can be changed in settings
+    [Range(0, 10)] public float forceSetting = 5;
+    public void SetLanceForce(float force) { forceSetting = force; }
     [Range(0, 10)] public float spawnRateSetting;
-    public void SetSpawnRate(float rate){spawnRateSetting = rate;}
+    public void SetSpawnRate(float rate) { spawnRateSetting = rate; }
     public int propNumberSetting = 8;
+    public void SetPropNumber(string number) { propNumberSetting = int.Parse(number); }
+    public bool isGameTimed = true;     //if false -> it is scored
+    public float gameTime = 30;
+    public int maxScore = 5;
 
     //On awake create instance that persists between scenes
     private void Awake()
