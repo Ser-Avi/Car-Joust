@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
         mainManager = MainManager.Instance;
 
         timerText.text = $"{(int)mainManager.gameTime}";
-        if (!mainManager.isGameTimed){timerText.gameObject.SetActive(false);}
+        if (!mainManager.isGameTimed) { timerText.gameObject.SetActive(false); }
     }
 
     void Update()
@@ -41,10 +41,10 @@ public class GameManager : MonoBehaviour
     }
 
     void UpdateTime()
-    {   
+    {
         mainManager.gameTime -= Time.deltaTime;
         timerText.text = $"{(int)mainManager.gameTime}";
-        if (mainManager.gameTime<=0)
+        if (mainManager.gameTime <= 0)
         {
             GameOver();
         }
@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour
 
         scoreText.text = $"{scoreP1:D2} : {scoreP2:D2}";
 
-        if (scoreP1 >= mainManager.maxScore || scoreP2 >= mainManager.maxScore)
+        if ((scoreP1 >= mainManager.maxScore || scoreP2 >= mainManager.maxScore) && !mainManager.isGameTimed)
         {
             GameOver();
         }
@@ -74,10 +74,11 @@ public class GameManager : MonoBehaviour
     {
         mainManager.isGameOver = true;
         int winner = 1;
-        if (scoreP1<scoreP2)
+        if (scoreP1 < scoreP2)
         {
             winner = 2;
-        } else if (scoreP1 == scoreP2)
+        }
+        else if (scoreP1 == scoreP2)
         {
             Debug.Log("Game Over! Draw!");
             Time.timeScale = 0;
