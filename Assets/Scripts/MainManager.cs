@@ -31,9 +31,13 @@ public class MainManager : MonoBehaviour
     public void SetSpawnRate(float rate) { spawnRateSetting = rate; }
     public int propNumberSetting = 8;
     public void SetPropNumber(string number) { propNumberSetting = int.Parse(number); }
-    public bool isGameTimed = true;     //if false -> it is scored
+    public bool isGameTimed = true;     //if false -> it is scored. Method to change is further down.
     public float gameTime = 30;
-    public int maxScore = 5;
+    [SerializeField] GameObject gameTimeObj;
+    public void SetGameTime(string time) { gameTime = int.Parse(time); }
+    public int maxScore = 10;
+    [SerializeField] GameObject gameScoreObj;
+    public void SetGameScore(string score) { maxScore = int.Parse(score); }
 
     //On awake create instance that persists between scenes
     private void Awake()
@@ -103,5 +107,22 @@ public class MainManager : MonoBehaviour
 #else
         Application.Quit();
 #endif
+    }
+
+    public void GameModeDropdown(int index)
+    {
+        if (index == 0)
+        {
+            isGameTimed = true;
+            gameTimeObj.SetActive(true);
+            gameScoreObj.SetActive(false);
+
+        }
+        else if (index == 1)
+        {
+            isGameTimed = false;
+            gameTimeObj.SetActive(false);
+            gameScoreObj.SetActive(true);
+        }
     }
 }
