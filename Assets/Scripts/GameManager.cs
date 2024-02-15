@@ -1,7 +1,5 @@
 using UnityEngine;
 using TMPro;
-using UnityEngine.SceneManagement;
-using Unity.VisualScripting;
 
 /*
 This script manages all "game" elements. Currently this is only keeping track of the score.
@@ -12,17 +10,22 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI scoreText;
     [SerializeField] TextMeshProUGUI timerText;
+    [SerializeField] TextMeshProUGUI gameWinnerText;
 
     public int scoreP1;
     public int scoreP2;
+    float currGameTime;
 
     MainManager mainManager;
 
     void Start()
     {
         mainManager = MainManager.Instance;
+        currGameTime = mainManager.gameTime;
+        mainManager.isGameOver = mainManager.isGamePaused = false;
+        Time.timeScale = 1;
 
-        timerText.text = $"{(int)mainManager.gameTime}";
+        timerText.text = $"{(int)currGameTime}";
         if (!mainManager.isGameTimed) { timerText.gameObject.SetActive(false); }
     }
 
@@ -42,9 +45,9 @@ public class GameManager : MonoBehaviour
 
     void UpdateTime()
     {
-        mainManager.gameTime -= Time.deltaTime;
-        timerText.text = $"{(int)mainManager.gameTime}";
-        if (mainManager.gameTime <= 0)
+        currGameTime -= Time.deltaTime;
+        timerText.text = $"{(int)currGameTime}";
+        if (currGameTime <= 0)
         {
             GameOver();
         }
@@ -73,6 +76,7 @@ public class GameManager : MonoBehaviour
     void GameOver()
     {
         mainManager.isGameOver = true;
+        GameObject.FindGameObjectWithTag("Canvas").GetComponent<MenuManager>().GameOverScreenToggler();
         int winner = 1;
         if (scoreP1 < scoreP2)
         {
@@ -80,11 +84,11 @@ public class GameManager : MonoBehaviour
         }
         else if (scoreP1 == scoreP2)
         {
-            Debug.Log("Game Over! Draw!");
+            gameWinnerText.text = "Draw!";
             Time.timeScale = 0;
             return;
         }
-        Debug.Log($"Game Over! Player {winner} wins!");
+        gameWinnerText.text = $"Player {winner} wins!";
 
         Time.timeScale = 0;
     }

@@ -19,6 +19,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField] GameObject controlsScreen;
     [SerializeField] GameObject optionsScreen;
     [SerializeField] GameObject pauseScreen;
+    [SerializeField] GameObject gameOverScreen;
 
     // Start is called before the first frame update
     void Start()
@@ -59,6 +60,7 @@ public class MenuManager : MonoBehaviour
     public void MainMenu()
     {
         Time.timeScale = 1;
+        mainManager.isGamePaused = mainManager.isGameOver = false;
         SceneManager.LoadScene(0);
     }
 
@@ -86,10 +88,18 @@ public class MenuManager : MonoBehaviour
     public void PauseScreenToggler()
     {
         pauseScreen.SetActive(!pauseScreen.activeInHierarchy);
+        Debug.Log("Toggled");
+    }
+
+    public void GameOverScreenToggler()
+    {
+        gameOverScreen.SetActive(!gameOverScreen.activeInHierarchy);
     }
 
     public void ResetGameScene()
     {
+        mainManager.isGameOver = mainManager.isGamePaused = false;
+        Time.timeScale = 1;
         SceneManager.LoadScene(1);
     }
 }

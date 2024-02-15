@@ -83,8 +83,6 @@ public class MainManager : MonoBehaviour
         countdownText.GetComponent<TextMeshProUGUI>().text = countdownTime.ToString();
         countdownText.SetActive(true);
 
-        GameObject.FindGameObjectWithTag("Canvas").GetComponent<MenuManager>().PauseScreenToggler();
-
         //countdown by one each second and update timer
         while (time > 0)
         {
@@ -96,6 +94,7 @@ public class MainManager : MonoBehaviour
         //turn screen off and resume game
         panel.SetActive(false);
         countdownText.SetActive(false);
+        isGamePaused = false;
         Time.timeScale = 1;
     }
 
