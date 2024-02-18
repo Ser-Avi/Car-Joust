@@ -13,6 +13,8 @@ public class EnemyVehicleController : MonoBehaviour
     Rigidbody carRb;
     WheelCollider[] wheelColliders;
     public bool isMoving = true;
+    public bool isStuck = false;
+    float timer = 0;
     float stuckTime = -1;
 
     // Start is called before the first frame update
@@ -30,9 +32,18 @@ public class EnemyVehicleController : MonoBehaviour
         if (!mainManager.isGamePaused)
         {
             DriveForward();
-        }
+            StuckManager();
 
-        StuckManager();
+            if (isStuck)    //Shrinks object down in a second and then destroys it.
+            {
+                timer += Time.deltaTime;
+                transform.localScale = Vector3.Lerp(Vector3.one, Vector3.zero, timer);
+                if (transform.localScale.magnitude <= 0.15)
+                {
+                    Destroy(gameObject);
+                }
+            }
+        }
 
         if (transform.position.y < -10)
         {
@@ -66,7 +77,7 @@ Destroys this game object if its velocity remains 0 for at least 3 seconds.
         }
         else if (!isMoving && stuckTime + 3 < Time.time)
         {
-            Destroy(gameObject);
+            isStuck = true;
         }
     }
 }
