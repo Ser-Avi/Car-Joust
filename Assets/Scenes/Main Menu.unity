@@ -2030,6 +2030,7 @@ MonoBehaviour:
   controlsScreen: {fileID: 906090178}
   optionsScreen: {fileID: 1980918708}
   pauseScreen: {fileID: 0}
+  gameOverScreen: {fileID: 0}
 --- !u!1 &610848286
 GameObject:
   m_ObjectHideFlags: 0
@@ -2494,9 +2495,9 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1185345931}
-        m_TargetAssemblyTypeName: MainManager, Assembly-CSharp
-        m_MethodName: SetPropNumber
+      - m_Target: {fileID: 598849226}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: PropNumberPassThrough
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3659,9 +3660,7 @@ MonoBehaviour:
   propNumberSetting: 8
   isGameTimed: 1
   gameTime: 30
-  gameTimeObj: {fileID: 1435752408}
   maxScore: 10
-  gameScoreObj: {fileID: 1274548921}
 --- !u!1 &1232617970
 GameObject:
   m_ObjectHideFlags: 0
@@ -3961,9 +3960,9 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1185345931}
-        m_TargetAssemblyTypeName: MainManager, Assembly-CSharp
-        m_MethodName: SetGameScore
+      - m_Target: {fileID: 598849226}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: GameScorePassThrough
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4734,9 +4733,9 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1185345931}
-        m_TargetAssemblyTypeName: MainManager, Assembly-CSharp
-        m_MethodName: SetGameTime
+      - m_Target: {fileID: 598849226}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: GameTimePassThrough
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7193,9 +7192,9 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1185345931}
-        m_TargetAssemblyTypeName: MainManager, Assembly-CSharp
-        m_MethodName: GameModeDropdown
+      - m_Target: {fileID: 598849226}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: GameModePassThrough
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7511,18 +7510,18 @@ PrefabInstance:
     - target: {fileID: 5405685546029693357, guid: b122aa852ff3a4f189a9bd246700a49d, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1185345931}
+      objectReference: {fileID: 598849226}
     - target: {fileID: 5405685546029693357, guid: b122aa852ff3a4f189a9bd246700a49d, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5405685546029693357, guid: b122aa852ff3a4f189a9bd246700a49d, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetLanceForce
+      value: LanceForcePassThrough
       objectReference: {fileID: 0}
     - target: {fileID: 5405685546029693357, guid: b122aa852ff3a4f189a9bd246700a49d, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: MainManager, Assembly-CSharp
+      value: MenuManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5405685546029693357, guid: b122aa852ff3a4f189a9bd246700a49d, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -8752,18 +8751,18 @@ PrefabInstance:
     - target: {fileID: 5405685546029693357, guid: b122aa852ff3a4f189a9bd246700a49d, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1185345931}
+      objectReference: {fileID: 598849226}
     - target: {fileID: 5405685546029693357, guid: b122aa852ff3a4f189a9bd246700a49d, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5405685546029693357, guid: b122aa852ff3a4f189a9bd246700a49d, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetSpawnRate
+      value: SpawnRatePassThrough
       objectReference: {fileID: 0}
     - target: {fileID: 5405685546029693357, guid: b122aa852ff3a4f189a9bd246700a49d, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: MainManager, Assembly-CSharp
+      value: MenuManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5405685546029693357, guid: b122aa852ff3a4f189a9bd246700a49d, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName

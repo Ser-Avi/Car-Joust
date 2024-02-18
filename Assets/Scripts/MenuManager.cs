@@ -66,7 +66,7 @@ public class MenuManager : MonoBehaviour
 
     //Toggles controls screen
     public void ControlsToggler()
-    {  
+    {
         if (SceneManager.GetActiveScene().buildIndex == 0)
         {
             mainScreen.SetActive(!mainScreen.activeInHierarchy);
@@ -75,7 +75,7 @@ public class MenuManager : MonoBehaviour
         {
             pauseScreen.SetActive(!pauseScreen.activeInHierarchy);
         }
-        
+
         controlsScreen.SetActive(!controlsScreen.activeInHierarchy);
     }
 
@@ -101,5 +101,35 @@ public class MenuManager : MonoBehaviour
         mainManager.isGameOver = mainManager.isGamePaused = false;
         Time.timeScale = 1;
         SceneManager.LoadScene(1);
+    }
+
+    public void GameModePassThrough(int index)
+    {
+        mainManager.GameModeDropdown(index);
+    }
+
+    public void LanceForcePassThrough(float force)
+    {
+        mainManager.SetLanceForce(force);
+    }
+
+    public void SpawnRatePassThrough(float rate)
+    {
+        mainManager.SetSpawnRate(rate);
+    }
+
+    public void PropNumberPassThrough(string number)
+    {
+        mainManager.SetPropNumber(number);
+    }
+
+    public void GameTimePassThrough(string time)
+    {
+        mainManager.SetGameTime(time);
+    }
+
+    public void GameScorePassThrough(string score)
+    {
+        mainManager.SetGameScore(score);
     }
 }

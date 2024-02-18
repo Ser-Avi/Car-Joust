@@ -33,10 +33,8 @@ public class MainManager : MonoBehaviour
     public void SetPropNumber(string number) { propNumberSetting = int.Parse(number); }
     public bool isGameTimed = true;     //if false -> it is scored. Method to change is further down.
     public float gameTime = 30;
-    [SerializeField] GameObject gameTimeObj;
     public void SetGameTime(string time) { gameTime = int.Parse(time); }
     public int maxScore = 10;
-    [SerializeField] GameObject gameScoreObj;
     public void SetGameScore(string score) { maxScore = int.Parse(score); }
 
     //On awake create instance that persists between scenes
@@ -110,6 +108,9 @@ public class MainManager : MonoBehaviour
 
     public void GameModeDropdown(int index)
     {
+        //Spaghetti code, but this is so that options can be changed after returning to the menu
+        GameObject gameTimeObj = GameObject.FindGameObjectWithTag("Canvas").transform.Find("Options Screen").Find("Max Time").gameObject;
+        GameObject gameScoreObj = GameObject.FindGameObjectWithTag("Canvas").transform.Find("Options Screen").Find("Max Score").gameObject;
         if (index == 0)
         {
             isGameTimed = true;
