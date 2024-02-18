@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using System;
 
 /*
 This script manages all "game" elements. Currently this is only keeping track of the score.
@@ -46,8 +47,8 @@ public class GameManager : MonoBehaviour
     void UpdateTime()
     {
         currGameTime -= Time.deltaTime;
-        timerText.text = $"{(int)currGameTime}";
-        if (currGameTime <= 0)
+        timerText.text = $"{(int)Math.Ceiling(currGameTime)}";
+        if (currGameTime < 0)
         {
             GameOver();
         }

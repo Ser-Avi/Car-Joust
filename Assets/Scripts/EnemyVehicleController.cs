@@ -1,3 +1,4 @@
+using System.Threading;
 using UnityEngine;
 
 /*
@@ -7,18 +8,19 @@ Has methods for initializing vars, managing movement and out of bounds, and to h
 */
 public class EnemyVehicleController : MonoBehaviour
 {
-    //Variables
-    [SerializeField] float velocityForce;
-
+    [SerializeField] float rotationSpeed;
     MainManager mainManager;
-
     Rigidbody carRb;
+    WheelCollider[] wheelColliders;
+    public bool isMoving = true;
+    float stuckTime = -1;
 
     // Start is called before the first frame update
     void Start()
     {
-        carRb = GetComponent<Rigidbody>();
         mainManager = MainManager.Instance;
+        carRb = GetComponent<Rigidbody>();
+        wheelColliders = GetComponentsInChildren<WheelCollider>();
     }
 
     // Update is called once per frame
@@ -27,8 +29,10 @@ public class EnemyVehicleController : MonoBehaviour
     {
         if (!mainManager.isGamePaused)
         {
-            carRb.AddForce(transform.forward * velocityForce);
+            DriveForward();
         }
+
+        StuckManager();
 
         if (transform.position.y < -10)
         {
@@ -36,16 +40,33 @@ public class EnemyVehicleController : MonoBehaviour
         }
     }
 
-    //The reset function resets the car's movement and places it at input.
-    //Not currently used.
-    /*
-    public void Reset(Vector3 pos, Quaternion rot)
+    void DriveForward()
     {
-        transform.SetPositionAndRotation(pos, rot);
-        carRb.velocity = Vector3.zero;
-        carRb.angularVelocity = Vector3.zero;
+        foreach (WheelCollider wheel in wheelColliders)
+        {
+            wheel.rotationSpeed = rotationSpeed;
+        }
     }
-    */
 
+/*
+Destroys this game object if its velocity remains 0 for at least 3 seconds.
+*/
+    void StuckManager()
+    {
+        isMoving = carRb.velocity.magnitude > 0;
 
+        if (isMoving)
+        {
+            stuckTime = -1;
+        }
+
+        if (!isMoving && stuckTime == -1)
+        {
+            stuckTime = Time.time;
+        }
+        else if (!isMoving && stuckTime + 3 < Time.time)
+        {
+            Destroy(gameObject);
+        }
+    }
 }
