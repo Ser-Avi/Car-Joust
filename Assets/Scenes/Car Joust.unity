@@ -963,6 +963,7 @@ MonoBehaviour:
   mainCamera: {fileID: 700687841}
   hoodCamera: {fileID: 2033513695}
   cameraKey: 102
+  resetKey: 114
   inputID: 2
   wheelFR: {fileID: 663603893}
   wheelFL: {fileID: 897111514}
@@ -4391,9 +4392,7 @@ MonoBehaviour:
   propNumberSetting: 8
   isGameTimed: 1
   gameTime: 60
-  gameTimeObj: {fileID: 0}
   maxScore: 5
-  gameScoreObj: {fileID: 0}
 --- !u!1 &1196337453
 GameObject:
   m_ObjectHideFlags: 0
@@ -6731,6 +6730,7 @@ MonoBehaviour:
   mainCamera: {fileID: 534669904}
   hoodCamera: {fileID: 1783035238}
   cameraKey: 303
+  resetKey: 108
   inputID: 1
   wheelFR: {fileID: 1749433798}
   wheelFL: {fileID: 957359819}
@@ -7291,7 +7291,7 @@ MonoBehaviour:
 
     P
 
-    R
+    L
 
 '
   m_isRightToLeft: 0

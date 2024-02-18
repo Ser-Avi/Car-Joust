@@ -17,7 +17,8 @@ public class PlayerController : MonoBehaviour
     //Camera
     public Camera mainCamera;
     public Camera hoodCamera;
-    public KeyCode cameraKey;
+    [SerializeField] KeyCode cameraKey;
+    [SerializeField] KeyCode resetKey;
     public string inputID;
 
     //Wheels
@@ -69,8 +70,7 @@ public class PlayerController : MonoBehaviour
         }
 
         //Reset vehicle location if it goes off screen or R gets pressed.
-        //MOVE to game manager and tie this info to score system.
-        if (transform.position.y < -5 || Input.GetKeyDown(KeyCode.R))
+        if (transform.position.y < -5 || Input.GetKeyDown(resetKey))
         {
             gameManager.GetComponent<GameManager>().UpdateScore(1, int.Parse(inputID));
 
