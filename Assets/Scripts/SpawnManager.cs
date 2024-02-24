@@ -7,12 +7,13 @@ public class SpawnManager : MonoBehaviour
 
     [SerializeField] GameObject[] vehiclePrefabs;
     [SerializeField] GameObject[] vehicles;
+    float[] laneXs = { 15, 5, -5, -15 };
     [SerializeField] GameObject[] propPrefabs;
 
     float spawnRate;
-    private float propZMax = 165;
-    private float propZMin = -25;
-    private float propXrange = 15;
+    [SerializeField] float propZMax = 165;
+    [SerializeField] float propZMin = -25;
+    [SerializeField] float propXrange = 15;
     int propNumber;
 
     // Start is called before the first frame update
@@ -48,15 +49,13 @@ public class SpawnManager : MonoBehaviour
     //Spawns the traffic.
     IEnumerator SpawnCars()
     {
-        float[] laneXs = { 15, 5, -5, -15 };
-
         while (!mainManager.isGamePaused)
         {
-            yield return new WaitForSeconds(10 / spawnRate);
             GameObject vehicle = vehiclePrefabs[Random.Range(0, vehiclePrefabs.Length)];
-            Instantiate(vehicle, new Vector3(laneXs[Random.Range(0, 2)], 0.2f, -20), Quaternion.identity);
+            Instantiate(vehicle, new Vector3(laneXs[Random.Range(0, 2)], 0.2f, propZMin-10), Quaternion.identity);
             vehicle = vehiclePrefabs[Random.Range(0, vehiclePrefabs.Length)];
-            Instantiate(vehicle, new Vector3(laneXs[Random.Range(2, 4)], 0.2f, 160), new Quaternion(0, 180, 0, 0));
+            Instantiate(vehicle, new Vector3(laneXs[Random.Range(2, 4)], 0.2f, propZMax+10), new Quaternion(0, 180, 0, 0));
+            yield return new WaitForSeconds(10 / spawnRate);
         }
 
 
