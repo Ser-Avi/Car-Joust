@@ -24,12 +24,12 @@ public class MainManager : MonoBehaviour
     public float breakForceSetting;
 
     //Variables that can be changed in settings
-    [Range(0, 10)] public float forceSetting = 5;
+    [Range(0, 10)] public float forceSetting;
     public void SetLanceForce(float force) { forceSetting = force; }
     [Range(0, 10)] public float spawnRateSetting;
     public void SetSpawnRate(float rate) { spawnRateSetting = rate; }
-    public int propNumberSetting = 8;
-    public void SetPropNumber(string number) { propNumberSetting = int.Parse(number); }
+    [Range(0,10)] public float propNumberSetting;
+    public void SetPropNumber(float number) { propNumberSetting = number; }
     public bool isGameTimed = true;     //if false -> it is scored. Method to change is further down.
     public float gameTime = 30;
     public void SetGameTime(string time) { gameTime = int.Parse(time); }

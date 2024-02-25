@@ -118,7 +118,7 @@ public class MenuManager : MonoBehaviour
         mainManager.SetSpawnRate(rate);
     }
 
-    public void PropNumberPassThrough(string number)
+    public void PropNumberPassThrough(float number)
     {
         mainManager.SetPropNumber(number);
     }

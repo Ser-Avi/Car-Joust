@@ -21,10 +21,13 @@ public class SpawnManager : MonoBehaviour
     {
         mainManager = MainManager.Instance;
         spawnRate = mainManager.spawnRateSetting;
-        propNumber = mainManager.propNumberSetting;
+        propNumber = (int) ((mainManager.propNumberSetting/5) * 15);
 
         SpawnProps();
-        StartCoroutine(SpawnCars());
+        if (spawnRate > 0)
+        {
+            StartCoroutine(SpawnCars());
+        }
     }
 
     // Update is called once per frame
@@ -46,7 +49,7 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
-    //Spawns the traffic.
+    //Spawns the traffic
     IEnumerator SpawnCars()
     {
         while (!mainManager.isGamePaused)
@@ -55,7 +58,7 @@ public class SpawnManager : MonoBehaviour
             Instantiate(vehicle, new Vector3(laneXs[Random.Range(0, 2)], 0.2f, propZMin-10), Quaternion.identity);
             vehicle = vehiclePrefabs[Random.Range(0, vehiclePrefabs.Length)];
             Instantiate(vehicle, new Vector3(laneXs[Random.Range(2, 4)], 0.2f, propZMax+10), new Quaternion(0, 180, 0, 0));
-            yield return new WaitForSeconds(10 / spawnRate);
+            yield return new WaitForSeconds(20 / spawnRate);
         }
 
 

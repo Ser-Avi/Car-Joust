@@ -4427,7 +4427,7 @@ MonoBehaviour:
   breakForceSetting: 50000
   forceSetting: 5
   spawnRateSetting: 2
-  propNumberSetting: 8
+  propNumberSetting: 2.01
   isGameTimed: 1
   gameTime: 60
   maxScore: 5
@@ -5871,7 +5871,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 3d654dd61a5c245c782209152ea42b3d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7475,7 +7475,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 3d654dd61a5c245c782209152ea42b3d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

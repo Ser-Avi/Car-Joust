@@ -9,6 +9,7 @@ public class Options : MonoBehaviour
     [SerializeField] TMP_Dropdown gameModeDropdown;
     [SerializeField] Slider trafficSlider;
     [SerializeField] Slider lanceSlider;
+    [SerializeField] Slider propSlider;
     MainManager mainManager;
     
     void OnEnable()
@@ -26,5 +27,6 @@ public class Options : MonoBehaviour
 
         trafficSlider.value = mainManager.spawnRateSetting;
         lanceSlider.value = mainManager.forceSetting;
+        propSlider.value = mainManager.propNumberSetting;
     }
 }
