@@ -1346,7 +1346,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 1500658119}
+  m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &489030152
@@ -3654,11 +3654,11 @@ MonoBehaviour:
   isGamePaused: 0
   isGameOver: 0
   countdownTime: 3
-  motorForceSetting: 2000
+  motorForceSetting: 3000
   breakForceSetting: 50000
   forceSetting: 5
   spawnRateSetting: 1.82
-  propNumberSetting: 8
+  propNumberSetting: 4
   isGameTimed: 1
   gameTime: 30
   maxScore: 10
