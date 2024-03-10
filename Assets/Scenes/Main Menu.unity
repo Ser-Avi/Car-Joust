@@ -307,7 +307,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 30
+  m_text: 60
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1443,7 +1443,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 10
+  m_text: 7
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3470,9 +3470,9 @@ MonoBehaviour:
   forceSetting: 5
   spawnRateSetting: 1.82
   propNumberSetting: 4
-  isGameTimed: 1
-  gameTime: 30
-  maxScore: 10
+  isGameTimed: 0
+  gameTime: 60
+  maxScore: 7
 --- !u!1 &1232617970
 GameObject:
   m_ObjectHideFlags: 0
@@ -6699,7 +6699,7 @@ MonoBehaviour:
 
     Pause
 
-    Reset
+    Respawn
 
 '
   m_isRightToLeft: 0
